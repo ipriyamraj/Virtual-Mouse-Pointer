@@ -1,3 +1,5 @@
+For Hand Tracking Module
+
 This Python script uses the MediaPipe library and OpenCV to detect and track hands in a video stream from a webcam. 
 The script defines a "handDetector" class that has methods to find hands in an image and extract their landmarks, 
 calculate the positions of fingers, and find the distance between two points on a hand. The "main" function reads 
