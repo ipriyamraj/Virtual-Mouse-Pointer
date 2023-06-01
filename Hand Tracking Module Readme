@@ -13,6 +13,8 @@ PyCharm Community Edition 2022.2.1
 Python 3.7 
 OpenCV 4.2 or higher
 MediaPipe 0.8.3 or higher
+Autopy
+Pyautogui
 
 
 Installation:-
