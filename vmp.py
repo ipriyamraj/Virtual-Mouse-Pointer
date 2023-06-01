@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import HandTrackingModule as htm
 import time
+import pyautogui
 import autopy
 from pynput.mouse import Button, Controller
 
@@ -56,9 +57,10 @@ while True:
             # autopy.mouse.move(wScr-x3, y3)
             cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
             plocX, plocY = clocX, clocY
+            cv2.putText(img, "moving mode", (10, 70), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (0, 70, 25), 3)
 
         # Both Index and middle fingers are up : Clicking Mode
-        if fingers[1] == 1 and fingers[2] == 1:
+        if fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 0 and fingers[4] == 0 and fingers[0] == 0:
 
             # 9. Find distance between fingers
             length, img, lineInfo = detector.findDistance(8, 12, img)
@@ -66,14 +68,17 @@ while True:
                 cv2.circle(img, (lineInfo[4], lineInfo[5]),15, (0, 255, 0), cv2.FILLED)
                 # mouse.scroll(0, 2)
                 autopy.mouse.click(button=autopy.mouse.Button.LEFT)
+                cv2.putText(img, "left click", (10, 70), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (0, 70, 25), 3)
 
         # When middle finger is up : Scroll down
-        if fingers[1] == 0 and fingers[2] == 1:
+        if fingers[1] == 0 and fingers[2] == 1 and fingers[3] == 0 and fingers[4] == 0 and fingers[0] == 0:
             mouse.scroll(0, -2)
+            cv2.putText(img, "scroll down", (10, 70), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (0, 70, 25), 3)
 
         # When ring and little fingers are up : Scroll up
-        if fingers[1] == 0 and fingers[2] == 0 and fingers[3] == 1 and fingers[4] == 1 and fingers[0] == 0:
+        if fingers[1] == 0 and fingers[2] == 0 and fingers[3] == 0 and fingers[4] == 1 and fingers[0] == 0:
             mouse.scroll(0, 2)
+            cv2.putText(img, "scroll up", (10, 70), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (0, 70, 25), 3)
 
         # Both Index and middle fingers are up : Right Click Mode
         if fingers[1] == 1 and fingers[2] == 0 and fingers[3] == 0 and fingers[4] == 0 and fingers[0] == 1:
@@ -81,6 +86,11 @@ while True:
             if lengthi < 40:
                 cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
                 autopy.mouse.click(button=autopy.mouse.Button.RIGHT)
+                cv2.putText(img, "right click", (10, 70), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (0, 70, 25), 3)
+
+        if fingers[1] == 1 and fingers[2] == 0 and fingers[3] == 0 and fingers[4] == 1 and fingers[0] == 1:
+            pyautogui.click(clicks=2, interval=0.25)
+            cv2.putText(img, "double click", (10, 70), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (0, 70, 25), 3)
 
     # 11. Frame Rate
     cTime = time.time()
