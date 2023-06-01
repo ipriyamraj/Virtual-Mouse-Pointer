@@ -9,7 +9,8 @@ hand landmarks and other information.
 
 Requirements:-
 
-Python 3.6 or higher
+PyCharm Community Edition 2022.2.1
+Python 3.7 
 OpenCV 4.2 or higher
 MediaPipe 0.8.3 or higher
 
@@ -24,7 +25,6 @@ Run the script using the command:
 python hand_detection.py
 
 Place your hand in front of the webcam and move it around to see the hand detection and tracking in action.
-Press "q" to quit the script.
 
 
 Customization:-
